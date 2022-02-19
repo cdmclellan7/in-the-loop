@@ -1,5 +1,3 @@
-import { useState, useEffect } from "react";
-
 import RequestPost from "../RequestPost";
 import ResponseSection from "../ResponseSection";
 

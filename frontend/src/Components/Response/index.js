@@ -31,7 +31,7 @@ function Response({ response }) {
       setUser(`${json.Payload[0].first_name} ${json.Payload[0].last_name}`);
     }
     getUserName();
-  }, []);
+  }, [response.user_id]);
 
   return (
     <div>

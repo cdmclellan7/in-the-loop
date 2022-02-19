@@ -9,7 +9,7 @@ import "./index.css";
 function App() {
   const [requestList, setRequestList] = useState([]);
   const [submittedRequest, setSubmittedRequest] = useState(null);
-  const [currentUserId, setCurrentUserId] = useState(2); //change to implement authentication!
+  const [currentUserId /*setCurrentUserId*/] = useState(2); //change to implement authentication!
 
   useEffect(() => {
     async function getData() {
@@ -20,39 +20,44 @@ function App() {
     getData();
   }, []);
 
-  useEffect( () => {
+  useEffect(() => {
     if (submittedRequest) {
       async function postRequest() {
         var today = new Date();
-        var date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
-  
-        const result = await fetch("https://week-project.herokuapp.com/requests", {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            "user_id": currentUserId,
-            title: submittedRequest.problemTitle,
-            category: submittedRequest.category,
-            room: submittedRequest.room,
-            body: submittedRequest.help + ": " + submittedRequest.description,
-            "request_date": date
-          })
-        })
+        var date =
+          today.getFullYear() +
+          "-" +
+          (today.getMonth() + 1) +
+          "-" +
+          today.getDate();
+
+        const result = await fetch(
+          "https://week-project.herokuapp.com/requests",
+          {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify({
+              user_id: currentUserId,
+              title: submittedRequest.problemTitle,
+              category: submittedRequest.category,
+              room: submittedRequest.room,
+              body: submittedRequest.help + ": " + submittedRequest.description,
+              request_date: date,
+            }),
+          }
+        );
         const json = await result.json();
 
-        setRequestList([json.Payload[0], ...requestList, ]);
-
+        setRequestList((requestList) => [json.Payload[0], ...requestList]);
       }
       postRequest();
     }
-  }, [submittedRequest])
-
-
+  }, [submittedRequest, currentUserId]);
 
   function handleRequestSubmit(request) {
-    setSubmittedRequest(request)
+    setSubmittedRequest(request);
   }
 
   return (
@@ -62,7 +67,7 @@ function App() {
       <div className="topContainer">
         <div className="row">
           <div className="col" id="createRequest">
-            <CreateRequest setSubmittedRequest={handleRequestSubmit}  />
+            <CreateRequest setSubmittedRequest={handleRequestSubmit} />
           </div>
 
           <div className="col" id="searchRequest">
@@ -74,7 +79,11 @@ function App() {
       <div className="row">
         {requestList.map((request) => {
           return (
-            <div key={request["request_id"]} className="col" id="displayedRequest">
+            <div
+              key={request["request_id"]}
+              className="col"
+              id="displayedRequest"
+            >
               <Request
                 id={request["request_id"]}
                 title={request.title}
