@@ -9,9 +9,13 @@ import Profile from "../Components/Profile";
 import { useEffect, useState } from "react";
 import "./index.css";
 
+import { useAuth0 } from "@auth0/auth0-react";
+
 import { baseBackendURL } from "../config.js";
 
 function App() {
+  const { user, isAuthenticated, isLoading } = useAuth0();
+
   const [requestList, setRequestList] = useState([]);
   const [submittedRequest, setSubmittedRequest] = useState(null);
   const [currentUserId /*setCurrentUserId*/] = useState(2); //change to implement authentication!
@@ -65,43 +69,49 @@ function App() {
   return (
     <div className="myApp">
       <h1 className="App-header">In The Loop</h1>
-      <LoginButton />
-      <LogoutButton />
-      <Profile />
-      <div className="topContainer">
-        <div className="row">
-          <div className="col" id="createRequest">
-            <CreateRequest setSubmittedRequest={handleRequestSubmit} />
-          </div>
+      {!isAuthenticated ? (
+        <LoginButton />
+      ) : (
+        <>
+          <LogoutButton />
+          <Profile user={user} />
+          <div className="topContainer">
+            <div className="row">
+              <div className="col" id="createRequest">
+                <CreateRequest setSubmittedRequest={handleRequestSubmit} />
+              </div>
 
-          <div className="col" id="searchRequest">
-            <BrowseRequest />
-          </div>
-        </div>
-      </div>
-
-      <div className="row">
-        {requestList.map((request) => {
-          return (
-            <div
-              key={request["request_id"]}
-              className="col"
-              id="displayedRequest"
-            >
-              <Request
-                id={request["request_id"]}
-                title={request.title}
-                body={request.body}
-                category={request.category}
-                date={request["request_date"]}
-                room={request.room}
-                userId={request["user_id"]}
-                currentUserId={currentUserId}
-              />
+              <div className="col" id="searchRequest">
+                <BrowseRequest />
+              </div>
             </div>
-          );
-        })}
-      </div>
+          </div>
+
+          <div className="row">
+            {requestList.map((request) => {
+              return (
+                <div
+                  key={request["request_id"]}
+                  className="col"
+                  id="displayedRequest"
+                >
+                  <Request
+                    id={request["request_id"]}
+                    title={request.title}
+                    body={request.body}
+                    category={request.category}
+                    date={request["request_date"]}
+                    room={request.room}
+                    userId={request["user_id"]}
+                    currentUserId={currentUserId}
+                  />
+                </div>
+              );
+            })}
+          </div>
+        </>
+      )}
+      {isLoading && <div>Loading ...</div>}
     </div>
   );
 }
