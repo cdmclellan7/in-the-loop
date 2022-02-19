@@ -4,6 +4,7 @@ import CreateRequest from "../Components/CreateRequests";
 import BrowseRequest from "../Components/BrowseRequests";
 import Request from "../Components/Request";
 import LoginButton from "../Components/LoginButton";
+import LogoutButton from "../Components/LogoutButton";
 import { useEffect, useState } from "react";
 import "./index.css";
 
@@ -64,6 +65,7 @@ function App() {
     <div className="myApp">
       <h1 className="App-header">In The Loop</h1>
       <LoginButton />
+      <LogoutButton />
       <div className="topContainer">
         <div className="row">
           <div className="col" id="createRequest">
