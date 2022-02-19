@@ -3,6 +3,8 @@ import ResponseForm from "../ResponseForm";
 import { useState, useEffect } from "react";
 import React from "react";
 
+import { baseBackendURL } from "../../config.js";
+
 function ResponseSection({ id, currentUserId }) {
   const [responsesList, setResponsesList] = useState([]);
   const [areResponsesVisible, setAreResponsesVisible] = useState(false);
@@ -10,10 +12,7 @@ function ResponseSection({ id, currentUserId }) {
   useEffect(() => {
     async function fetchResponses() {
       // fetch the data
-      // https://week-project.herokuapp.com/response/:request_id
-      const res = await fetch(
-        `https://week-project.herokuapp.com/response/${id}`
-      );
+      const res = await fetch(`${baseBackendURL}/${id}`);
       const json = await res.json();
       setResponsesList(json.Payload);
     }
@@ -29,8 +28,7 @@ function ResponseSection({ id, currentUserId }) {
       "-" +
       today.getDate();
     //response.body to access user's input
-    // make a fetch post request to "https://week-project.herokuapp.com/response"
-    const res = await fetch("https://week-project.herokuapp.com/response", {
+    const res = await fetch(`${baseBackendURL}/response`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -53,7 +51,11 @@ function ResponseSection({ id, currentUserId }) {
 
   return (
     <div>
-      <button id="hide-responses-button" className="btn btn-primary" onClick={toggleResponsesVisibility}>
+      <button
+        id="hide-responses-button"
+        className="btn btn-primary"
+        onClick={toggleResponsesVisibility}
+      >
         {areResponsesVisible ? "Hide Responses" : "View Responses"}
       </button>
       <div

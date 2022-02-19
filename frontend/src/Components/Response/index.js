@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 
+import { baseBackendURL } from "../../config.js";
+
 function Response({ response }) {
   const [currentVoteCount, setCurrentVoteCount] = useState(response.vote_count);
   const [user, setUser] = useState();
@@ -7,7 +9,7 @@ function Response({ response }) {
   async function handleUpVote() {
     console.log("upvote test");
     const res = await fetch(
-      `https://week-project.herokuapp.com/response/${response.response_id}`,
+      `${baseBackendURL}/response/${response.response_id}`,
       {
         method: "POST",
         headers: {
@@ -24,9 +26,7 @@ function Response({ response }) {
 
   useEffect(() => {
     async function getUserName() {
-      const res = await fetch(
-        `https://week-project.herokuapp.com/users/${response.user_id}`
-      );
+      const res = await fetch(`${baseBackendURL}/users/${response.user_id}`);
       const json = await res.json();
       setUser(`${json.Payload[0].first_name} ${json.Payload[0].last_name}`);
     }
