@@ -1,11 +1,11 @@
 import query from "../index.js";
 
 async function createUsersTable() {
-    const sqlString = `CREATE TABLE IF NOT EXISTS users (user_id SERIAL PRIMARY KEY, first_name TEXT NOT NULL, 
-        last_name TEXT NOT NULL, email TEXT NOT NULL, role TEXT NOT NULL);`
+  const sqlString = `CREATE TABLE IF NOT EXISTS users (user_id TEXT PRIMARY KEY, first_name TEXT, 
+        last_name TEXT, email TEXT, role TEXT);`;
 
-    const res = await query(sqlString);
-    console.log("User table created", res)
+  const res = await query(sqlString);
+  console.log("User table created", res);
 }
 
 createUsersTable();
