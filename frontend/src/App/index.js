@@ -38,7 +38,7 @@ function App() {
         body: JSON.stringify({
           user_id: user.sub,
           first_name: user.given_name || user.name,
-          last_name: user.last_name || null,
+          last_name: user.family_name || null,
           email: user.email,
         }),
       });
