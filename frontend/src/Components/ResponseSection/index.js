@@ -12,7 +12,7 @@ function ResponseSection({ id, currentUserId }) {
   useEffect(() => {
     async function fetchResponses() {
       // fetch the data
-      const res = await fetch(`${baseBackendURL}/${id}`);
+      const res = await fetch(`${baseBackendURL}/response/${id}`);
       const json = await res.json();
       setResponsesList(json.Payload);
     }
