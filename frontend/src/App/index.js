@@ -15,6 +15,7 @@ import { baseBackendURL } from "../config.js";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
+  console.log("id hopefully");
 
   const [requestList, setRequestList] = useState([]);
   const [submittedRequest, setSubmittedRequest] = useState(null);
@@ -27,7 +28,27 @@ function App() {
       setRequestList(data.Payload);
     }
     getData();
-  }, []);
+
+    async function authenticateUser() {
+      const result = await fetch(`${baseBackendURL}/users`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          user_id: user.sub,
+          first_name: user.given_name || user.name,
+          last_name: user.last_name || null,
+          email: user.email,
+        }),
+      });
+      const data = await result.json();
+      console.log("user response", data);
+    }
+    if (isAuthenticated) {
+      authenticateUser();
+    }
+  });
 
   useEffect(() => {
     if (submittedRequest) {

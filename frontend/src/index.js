@@ -11,6 +11,8 @@ ReactDOM.render(
     domain="in-the-loop.eu.auth0.com"
     clientId="ZOOijBF4g9TfvgY9SfLebEvej9lKT6F0"
     redirectUri={window.location.origin}
+    audience="https://in-the-loop.eu.auth0.com/api/v2/"
+    scope="read:current_user update:current_user_metadata"
   >
     <App />
   </Auth0Provider>,

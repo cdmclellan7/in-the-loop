@@ -19,7 +19,7 @@ export async function createUser(user) {
   const lastName = user.last_name;
   const email = user.email;
   const role = user.role;
-  const sqlString = `INSERT INTO users (user_id, first_name, last_name, email, role) VALUES ('${user_id}', '${firstName}', '${lastName}', '${email}', '${role}');`;
+  const sqlString = `INSERT INTO users (user_id, first_name, last_name, email, role) VALUES ('${user_id}', '${firstName}', '${lastName}', '${email}', '${role}') ON CONFLICT DO NOTHING;`;
   const res = await query(sqlString);
   return res;
 }
