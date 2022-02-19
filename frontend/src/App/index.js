@@ -6,6 +6,8 @@ import Request from "../Components/Request";
 import { useEffect, useState } from "react";
 import "./index.css";
 
+import { baseBackendURL } from "../config.js";
+
 function App() {
   const [requestList, setRequestList] = useState([]);
   const [submittedRequest, setSubmittedRequest] = useState(null);
@@ -13,7 +15,7 @@ function App() {
 
   useEffect(() => {
     async function getData() {
-      const result = await fetch("https://week-project.herokuapp.com/requests");
+      const result = await fetch(`${baseBackendURL}/requests`);
       const data = await result.json();
       setRequestList(data.Payload);
     }
@@ -31,23 +33,20 @@ function App() {
           "-" +
           today.getDate();
 
-        const result = await fetch(
-          "https://week-project.herokuapp.com/requests",
-          {
-            method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify({
-              user_id: currentUserId,
-              title: submittedRequest.problemTitle,
-              category: submittedRequest.category,
-              room: submittedRequest.room,
-              body: submittedRequest.help + ": " + submittedRequest.description,
-              request_date: date,
-            }),
-          }
-        );
+        const result = await fetch(`${baseBackendURL}/requests`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            user_id: currentUserId,
+            title: submittedRequest.problemTitle,
+            category: submittedRequest.category,
+            room: submittedRequest.room,
+            body: submittedRequest.help + ": " + submittedRequest.description,
+            request_date: date,
+          }),
+        });
         const json = await result.json();
 
         setRequestList((requestList) => [json.Payload[0], ...requestList]);
