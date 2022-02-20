@@ -130,6 +130,7 @@ function App() {
                     room={request.room}
                     userId={request["user_id"]}
                     currentUserId={currentUserId}
+                    userName={request["first_name"]}
                   />
                 </div>
               );

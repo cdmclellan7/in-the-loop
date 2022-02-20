@@ -10,12 +10,20 @@ export async function creatRequest(request) {
 
   const sqlString = `INSERT INTO requests (user_id, title, category, room, body, request_date) 
             VALUES ($1, $2, $3, $4, $5, $6) RETURNING *;`;
-  const res = await query(sqlString, [user_id, title, category, room, body, request_date]);
+  const res = await query(sqlString, [
+    user_id,
+    title,
+    category,
+    room,
+    body,
+    request_date,
+  ]);
   return res;
 }
 
 export async function getRequests() {
-  const sqlString = "SELECT * FROM requests;";
+  const sqlString =
+    "SELECT * FROM requests LEFT JOIN users ON users.user_id = requests.user_id;";
   const res = await query(sqlString);
   return res;
 }
