@@ -10,6 +10,7 @@ function Request({
   room,
   userId,
   currentUserId,
+  userName,
 }) {
   //fetch data about the responses to this specific request (fetch from the db)
   //state to store the list of responses - done
@@ -24,6 +25,7 @@ function Request({
         date={date}
         room={room}
         userId={userId}
+        userName={userName}
       />
       <ResponseSection id={id} currentUserId={currentUserId} />
     </div>

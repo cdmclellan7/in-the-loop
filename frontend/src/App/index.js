@@ -15,11 +15,16 @@ import { baseBackendURL } from "../config.js";
 
 function App() {
   const { user, isAuthenticated, isLoading } = useAuth0();
-  console.log("id hopefully");
 
   const [requestList, setRequestList] = useState([]);
   const [submittedRequest, setSubmittedRequest] = useState(null);
-  const [currentUserId /*setCurrentUserId*/] = useState(2); //change to implement authentication!
+  const [currentUserId, setCurrentUserId] = useState(null); //change to implement authentication!
+
+  useEffect(() => {
+    if (isAuthenticated) {
+      setCurrentUserId(user.sub);
+    }
+  }, [user, isAuthenticated]);
 
   useEffect(() => {
     async function getData() {
@@ -125,6 +130,7 @@ function App() {
                     room={request.room}
                     userId={request["user_id"]}
                     currentUserId={currentUserId}
+                    userName={request["first_name"]}
                   />
                 </div>
               );
