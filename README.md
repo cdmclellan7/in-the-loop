@@ -1,5 +1,109 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6716007&assignment_repo_type=AssignmentRepo)
-# National Bootcamp - Week Nine Project Brief
+# In the Loop
+
+A messaging forum for School of Code bootcampers to ask and answer coding questions. They can say what Zoom breakout room they are in and what the problem is so that coaches can easily come to help. Other users can also comment on the question and upvote helpful comments.
+
+## Table of Contents
+- [What is this?](#what-is-this?)
+- [What did I learn?](#what-did-I-learn?)
+- [Project Next Steps](#project-next-steps)
+- [Project Status](#project-status)
+- [Setup to Run Locally](#setup)
+- [Original Project Brief](#original-project-brief)
+
+## What is this? <a name="what-is-this?"></a>
+
+This project was started for the School of Code National Bootcamp's Week 9 Project. Our team of 4 had less than 5 days to design, build, deploy, and demo a full-stack app. I learned a ton from this experience, especially about working in an agile team. Since the end of that project week, I've continued to work on the app to continue to improve my skills.
+
+## What did I learn during the project week? <a name="what-did-I-learn?"></a>
+
+- Tech Stack
+  - React SPA frontend
+  - Node.js/Express REST API
+  - PostgreSQL database
+- Git Branching
+  - How to use branching to organize the team's workflow
+  - How to address merge conflicts
+- Deployment
+  - Deploying to Netlify and Heroku from subdirectories in the repo
+  - Deploying more than one service from a single repo
+- Agile Working
+  - Scrum: standups, retros
+  - Trello kanban
+  - That team communication and planning is vital to any project.
+- Design and Planning
+  - The importance of a database ERD and good documentation for the API routes
+  - Making user personas, user journey, and wireframes
+
+## Project Next Steps <a name="project-next-steps"></a>
+
+Even though the project week has finished, I plan to continue adding more features to the app and refactoring the code. As you can imagine, the mad dash to complete a full-stack app in less than 5 days with a team that had never worked together before led to a fair amount of code smells and technical debt. Instead of abandoning this project, I am using it as an exercise in refactoring and continuously improving existing code. I feel this is a worthwhile exercise because working engineers rarely have the luxury of starting a project from scratch.
+
+### Refactoring Goals
+- Reduce the number of requests to the API
+  - use SQL table joins to include more of the necessary data in the API responses to reduce under fetching
+  - Create a React custom hook to call the API only when new data is needed to be fetched
+- Remove uneccessary state and props from React components
+
+### Goals for New Features
+
+- Authenticate users ✅ - 2022-02-20
+- Add new users to the database and display their name on their posts/comments ✅ - 2022-02-20
+- Secure the API
+- Use Web Sockets to update the page for users in real time
+
+## Project Status <a name="project-status"></a>
+
+The frontend is [deployed to Netlify here](https://in-the-l00p.netlify.app/).
+The backend API server and Postgres database are [deployed to Heroku here](https://in-the-loop-backend.herokuapp.com/).
+
+This repo is a fork of the [original project repo](https://github.com/SchoolOfCode/national-project-week-room25-project).
+
+## Setup to Run Locally <a name="setup"></a>
+
+**To clone the repo:**
+```
+git clone git@github.com:cdmclellan7/in-the-loop.git
+cd in-the-loop
+```
+
+**To run the frontend:**
+
+First change frontend/src/config.js by commenting out line one and uncommenting line two like this:
+```
+//export const baseBackendURL = "https://in-the-loop-backend.herokuapp.com";
+export const baseBackendURL = "http://localhost:3001"; //dev URL
+
+```
+Then run the frontend.
+```
+cd frontend
+npm i
+npm start
+```
+And go to http://localhost:3000
+
+**To setup the database tables with starter data:**
+
+First create a .env file in /backend and add your database connection string 
+```
+DATABASE_URL=your-URL
+```
+Then create and populate the tables.
+```
+cd backend
+npm run db-create-and-populate-all-tables
+```
+
+**To run the backend:**
+```
+cd backend
+npm i
+npm run dev
+```
+And go to http://localhost:3001
+
+## Original Project Brief <a name="original-project-brief"></a>
+### National Bootcamp - Week Nine Project Brief
 
 For your project, you’ll be using what you’ve learned on the course so far to try and improve the lives of your users. In this case, the users will be close to home: bootcampers!
 
