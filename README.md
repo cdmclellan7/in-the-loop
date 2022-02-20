@@ -1,4 +1,47 @@
-[![Open in Visual Studio Code](https://classroom.github.com/assets/open-in-vscode-f059dc9a6f8d3a56e377f745f24479a46679e63a5d9fe6f495e02850cd0d8118.svg)](https://classroom.github.com/online_ide?assignment_repo_id=6716007&assignment_repo_type=AssignmentRepo)
+# In the Loop
+
+A messaging forum for School of Code bootcampers to ask and answer coding questions.
+
+## What is this?
+
+
+
+## What did I learn during the project week?
+
+- Git Branching
+  - How to use branching to organize the team's workflow
+  - How to address merge conflicts
+- Deployment
+  - Deploying to Netlify and Heroku from subdirectories in the repo
+  - Deploying more than one service from a single repo
+- Agile Working
+  - Scrum: standups, retros
+  - Trello kanban
+- Design and Planning
+  - The importance of a database ERD and good documentation for the API routes
+  - Making user personas, user journey, and wireframes
+
+## Project Next Steps
+
+Even though the project week has finished, I plan to continue adding more features to the app and refactoring the code. As you can imagine, the mad dash to complete a full-stack app in less than 5 days with a team that had never worked together before led to a fair amount of code smells and technical debt. Instead of abandoning this project, I am using it as an exercise in refactoring and continuously improving existing code. I feel this is a worthwhile exercise because working engineers rarely have the luxury of starting a project from scratch.
+
+### Goals for New Features
+
+- Authenticate users ✅ - 2022-02-20
+- Add new users to the database and display their name on their posts/comments ✅ - 2022-02-20
+- Secure the API
+- Use Web Sockets to update the page for users in real time
+
+## Project Status
+
+The frontend is [deployed to Netlify here]().
+The backend API server and Postgres database are [deployed to Heroku here]().
+
+This repo is a fork of the [original project repo](https://github.com/SchoolOfCode/national-project-week-room25-project).
+
+## Setup
+
+
 # National Bootcamp - Week Nine Project Brief
 
 For your project, you’ll be using what you’ve learned on the course so far to try and improve the lives of your users. In this case, the users will be close to home: bootcampers!
