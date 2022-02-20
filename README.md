@@ -2,11 +2,17 @@
 
 A messaging forum for School of Code bootcampers to ask and answer coding questions.
 
-## What is this?
+## Table of Contents
+- [What is this?](#what-is-this?)
+- [What did I learn?](#what-did-I-learn?)
+- [Project Next Steps](#project-next-steps)
+- [Project Status](#project-status)
+- [Setup to Run Locally](#setup)
+- [Original Project Brief](#original-project-brief)
 
+## What is this? <a name="what-is-this?"></a>
 
-
-## What did I learn during the project week?
+## What did I learn during the project week? <a name="what-did-I-learn?"></a>
 
 - Git Branching
   - How to use branching to organize the team's workflow
@@ -21,7 +27,7 @@ A messaging forum for School of Code bootcampers to ask and answer coding questi
   - The importance of a database ERD and good documentation for the API routes
   - Making user personas, user journey, and wireframes
 
-## Project Next Steps
+## Project Next Steps <a name="project-next-steps"></a>
 
 Even though the project week has finished, I plan to continue adding more features to the app and refactoring the code. As you can imagine, the mad dash to complete a full-stack app in less than 5 days with a team that had never worked together before led to a fair amount of code smells and technical debt. Instead of abandoning this project, I am using it as an exercise in refactoring and continuously improving existing code. I feel this is a worthwhile exercise because working engineers rarely have the luxury of starting a project from scratch.
 
@@ -38,14 +44,14 @@ Even though the project week has finished, I plan to continue adding more featur
 - Secure the API
 - Use Web Sockets to update the page for users in real time
 
-## Project Status
+## Project Status <a name="project-status"></a>
 
 The frontend is [deployed to Netlify here](https://in-the-l00p.netlify.app/).
 The backend API server and Postgres database are [deployed to Heroku here](https://in-the-loop-backend.herokuapp.com/).
 
 This repo is a fork of the [original project repo](https://github.com/SchoolOfCode/national-project-week-room25-project).
 
-## Setup to Run Locally
+## Setup to Run Locally <a name="setup"></a>
 
 **To clone the repo:**
 ```
@@ -81,7 +87,7 @@ npm run dev
 ```
 And go to http://localhost:3001
 
-## Original Project Brief
+## Original Project Brief <a name="original-project-brief"></a>
 ### National Bootcamp - Week Nine Project Brief
 
 For your project, you’ll be using what you’ve learned on the course so far to try and improve the lives of your users. In this case, the users will be close to home: bootcampers!
