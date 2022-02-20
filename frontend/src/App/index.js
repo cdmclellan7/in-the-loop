@@ -48,7 +48,7 @@ function App() {
         }),
       });
       const data = await result.json();
-      console.log("user response", data);
+      console.log(data);
     }
     if (isAuthenticated && user.sub) {
       authenticateUser();

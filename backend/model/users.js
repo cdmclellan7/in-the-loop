@@ -15,9 +15,6 @@ export async function getUserById(id) {
 
 export async function createUser(user) {
   const user_id = user.user_id;
-  if (user_id === null) {
-    return [];
-  }
   const firstName = user.first_name;
   const lastName = user.last_name;
   const email = user.email;
