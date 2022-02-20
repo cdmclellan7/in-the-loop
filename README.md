@@ -67,6 +67,14 @@ cd in-the-loop
 ```
 
 **To run the frontend:**
+
+First change frontend/src/config.js by commenting out line one and uncommenting line two like this:
+```
+//export const baseBackendURL = "https://in-the-loop-backend.herokuapp.com";
+export const baseBackendURL = "http://localhost:3001"; //dev URL
+
+```
+Then run the frontend.
 ```
 cd frontend
 npm i
