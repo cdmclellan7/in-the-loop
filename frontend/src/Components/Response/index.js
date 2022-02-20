@@ -28,7 +28,7 @@ function Response({ response }) {
     async function getUserName() {
       const res = await fetch(`${baseBackendURL}/users/${response.user_id}`);
       const json = await res.json();
-      setUser(`${json.Payload[0].first_name} ${json.Payload[0].last_name}`);
+      setUser(`${json.Payload[0].first_name}`);
     }
     getUserName();
   }, [response.user_id]);

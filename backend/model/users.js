@@ -8,8 +8,8 @@ export async function getUsers() {
 }
 
 export async function getUserById(id) {
-  const sqlString = `SELECT * FROM users WHERE user_id = ${id}`;
-  const res = await query(sqlString);
+  const sqlString = `SELECT * FROM users WHERE user_id = $1`;
+  const res = await query(sqlString, [id]);
   return res;
 }
 
@@ -19,7 +19,13 @@ export async function createUser(user) {
   const lastName = user.last_name;
   const email = user.email;
   const role = user.role;
-  const sqlString = `INSERT INTO users (user_id, first_name, last_name, email, role) VALUES ('${user_id}', '${firstName}', '${lastName}', '${email}', '${role}') ON CONFLICT DO NOTHING;`;
-  const res = await query(sqlString);
+  const sqlString = `INSERT INTO users (user_id, first_name, last_name, email, role) VALUES ($1, $2, $3, $4, $5) ON CONFLICT DO NOTHING;`;
+  const res = await query(sqlString, [
+    user_id,
+    firstName,
+    lastName,
+    email,
+    role,
+  ]);
   return res;
 }
