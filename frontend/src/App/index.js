@@ -50,7 +50,7 @@ function App() {
       const data = await result.json();
       console.log("user response", data);
     }
-    if (isAuthenticated) {
+    if (isAuthenticated && user.sub) {
       authenticateUser();
     }
   }, [isAuthenticated, user]);
