@@ -53,7 +53,7 @@ function App() {
     if (isAuthenticated) {
       authenticateUser();
     }
-  });
+  }, [isAuthenticated, user]);
 
   useEffect(() => {
     if (submittedRequest) {
