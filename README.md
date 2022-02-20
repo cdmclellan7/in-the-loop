@@ -1,6 +1,6 @@
 # In the Loop
 
-A messaging forum for School of Code bootcampers to ask and answer coding questions.
+A messaging forum for School of Code bootcampers to ask and answer coding questions. They can say what Zoom breakout room they are in and what the problem is so that coaches can easily come to help. Other users can also comment on the question and upvote helpful comments.
 
 ## Table of Contents
 - [What is this?](#what-is-this?)
@@ -12,8 +12,14 @@ A messaging forum for School of Code bootcampers to ask and answer coding questi
 
 ## What is this? <a name="what-is-this?"></a>
 
+This project was started for the School of Code National Bootcamp's Week 9 Project. Our team of 4 had less than 5 days to design, build, deploy, and demo a full-stack app. I learned a ton from this experience, especially about working in an agile team. Since the end of that project week, I've continued to work on the app to continue to improve my skills.
+
 ## What did I learn during the project week? <a name="what-did-I-learn?"></a>
 
+- Tech Stack
+  - React SPA frontend
+  - Node.js/Express REST API
+  - PostgreSQL database
 - Git Branching
   - How to use branching to organize the team's workflow
   - How to address merge conflicts
@@ -23,6 +29,7 @@ A messaging forum for School of Code bootcampers to ask and answer coding questi
 - Agile Working
   - Scrum: standups, retros
   - Trello kanban
+  - That team communication and planning is vital to any project.
 - Design and Planning
   - The importance of a database ERD and good documentation for the API routes
   - Making user personas, user journey, and wireframes
